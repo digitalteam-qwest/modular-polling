@@ -6,13 +6,6 @@
             "param2": "62a207895115d",
             "environment": "test",
             "label":"street name and numbering - test"
-        },
-        {
-            "time": "12:00",
-            "param1": "62a205a6cda71",
-            "param2": "62a207895115d",
-            "environment": "test",
-            "label":"fpn - test"
         }
     ],
     "heartbeat_interval_minutes": 10
