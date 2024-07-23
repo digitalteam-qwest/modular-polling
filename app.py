@@ -44,7 +44,7 @@ def validate_config(config):
     if 'jobs' not in config or not isinstance(config['jobs'], list):
         raise ValueError("Invalid configuration: 'jobs' key is missing or not a list")
     for job in config['jobs']:
-        if 'time' not in job or 'param1' not in job or 'param2' not in job:
+        if 'time' not in job or 'integrationIDs' not in job:
             raise ValueError(f"Invalid job configuration: {job}")
 
 def schedule_jobs(config):
@@ -56,8 +56,7 @@ def schedule_jobs(config):
         event = {
             "queryStringParameters": {
                 "environment": job['environment'],
-                "get-data-integration-id": job['param1'],
-                "send-data-integration-id": job['param2']
+                "integrationIDs": job['integrationIDs']
             }
         }
 

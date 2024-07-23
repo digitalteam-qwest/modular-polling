@@ -1,11 +1,28 @@
 {
     "jobs": [
         {
-            "time": "12:00",
-            "param1": "62a205a6cda71",
-            "param2": "62a207895115d",
+            "time": "00:00",
+            "integrationIDs": ["62a205a6cda71","62a207895115d"],
             "environment": "test",
-            "label":"street name and numbering - test"
+            "label":"street name and numbering - remind - test"
+        },
+        {
+            "time": "01:00",
+            "integrationIDs": ["62a204e7a31f5","62a20796ddc30"],
+            "environment": "test",
+            "label":"street name and numbering - cancel - test"
+        },
+        {
+            "time": "02:00",
+            "integrationIDs": ["669ed69196a84","669ed1bdb4b43"],
+            "environment": "test",
+            "label":"fpn - test"
+        },
+        {
+            "time": "03:00",
+            "integrationIDs": ["669f586074915","669f58853d1f","669f58d9c5804"],
+            "environment": "test",
+            "label":"polling test - test"
         }
     ],
     "heartbeat_interval_minutes": 10
