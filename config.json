@@ -19,8 +19,8 @@
             "label":"fpn - test"
         },
         {
-            "time": "03:00",
-            "integrationIDs": ["669f586074915","669f58853d1f","669f58d9c5804"],
+            "time": "09:48",
+            "integrationIDs": ["669f586074915","669f58853d1f4","669f58d9c5804"],
             "environment": "test",
             "label":"polling test - test"
         }
