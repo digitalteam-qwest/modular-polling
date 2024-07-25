@@ -14,7 +14,7 @@
         },
         {
             "time": "03:10",
-            "integrationIDs": ["62a204e7a31f5","62a20796ddc30", "62a207c045652"],
+            "integrationIDs": ["62a204e7a31f5","62a20796ddc30"],
             "environment": "live",
             "label":"Street name and numbering - cancel - live"
         },
@@ -34,13 +34,13 @@
             "time": "05:00",
             "integrationIDs": ["5d52d416b1d85","5d52ced72715b"],
             "environment": "live",
-            "label":"Sports and events - remind - live"
+            "label":"Sports and events - reminder emails - live"
         },
         {
             "time": "05:10",
             "integrationIDs": ["5d52d3e459313","5d52ce9c26d98"],
             "environment": "live",
-            "label":"Sports and events - cancel - live"
+            "label":"Sports and events - cancellation email - live"
         },
         {
             "time": "05:20",
