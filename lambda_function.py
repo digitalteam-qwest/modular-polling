@@ -30,11 +30,12 @@ def lambda_handler(event, context):
     #for each given row, call the given integration
     def recursiveSomething(index = 0, rows = {'0': None}):
         for i in rows:
-            newRows = callIntegration(integrationIDs[index], rows[i])
+            for integrationID in integrationIDs[index]:
+                newRows = callIntegration(integrationID, rows[i])
 
-            if (len(integrationIDs) > index + 1):
-                newIndex = index + 1
-                recursiveSomething(newIndex, newRows)
+                if (len(integrationIDs) > index + 1):
+                    newIndex = index + 1
+                    recursiveSomething(newIndex, newRows)
     
     #integrations initialisation
     integration = integrations(environment)

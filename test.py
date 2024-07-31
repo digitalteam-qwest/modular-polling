@@ -2,11 +2,30 @@ from lambda_function import lambda_handler
 import unittest
 
 class Test_TestIncrementDecrement(unittest.TestCase):
-    def test_increment_pass(self):
+    def test_linear(self):
         event = {
             "queryStringParameters": {
                 "environment": 'test',
-                "integrationIDs": ['669f586074915','669f58853d1f4','669f58d9c5804']
+                "integrationIDs": [
+                    ['669f586074915'],
+                    ['669f58853d1f4'],
+                    ['669f58d9c5804']
+                ]
+            }
+        }
+
+        self.assertEqual(lambda_handler(event, None), 'All good')
+
+
+    def test_multiples(self):
+        event = {
+            "queryStringParameters": {
+                "environment": 'test',
+                "integrationIDs": [
+                    ['669f586074915'],
+                    ['669f58853d1f4','669f58853d1f4'],
+                    ['669f58d9c5804']
+                ]
             }
         }
 
