@@ -1,6 +1,8 @@
 from lookup import integrations
+import time
 
 def lambda_handler(event, context):
+    start = time.time()
 
     environment = 'test'
     
@@ -44,4 +46,9 @@ def lambda_handler(event, context):
     #start
     recursiveSomething()
 
-    return 'All good'
+    time_lapsed = time.time() - start
+
+    return {
+        "result": "All good",
+        "time_lapsed": round(time_lapsed, 2)
+    }

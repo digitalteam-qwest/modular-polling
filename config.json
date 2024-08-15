@@ -100,6 +100,24 @@
             ],
             "environment": "test",
             "label":"Street name and numbering - cancel - test"
+        },
+        {
+            "time": "14:16",
+            "integrationIDs": [
+                ["66bdf7349f2f5"],
+                ["66bdf7b7861a5"]
+            ],
+            "environment": "test",
+            "label":"Slow job [1] - test"
+        },
+        {
+            "time": "14:16",
+            "integrationIDs": [
+                ["66bdf7349f2f5"],
+                ["66bdf9fbf3d13"]
+            ],
+            "environment": "test",
+            "label":"Slow job [2] - test"
         }
     ],
     "heartbeat_interval_minutes": 10

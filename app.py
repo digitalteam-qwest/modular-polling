@@ -5,6 +5,7 @@ import json
 import os
 import signal
 import sys
+import threading
 from datetime import datetime
 from lambda_function import lambda_handler
 
@@ -22,10 +23,16 @@ signal.signal(signal.SIGTERM, signal_handler)
 
 def job_wrapper(event, label):
     try:
-        result = lambda_handler(event, None)
-        logging.info(f"Job completed with label={label}, result={result}")
+        logging.info(f"Starting job with label = {label}")
+        outcome = lambda_handler(event, None)
+        logging.info(f"Job completed with label = {label}, outcome = {outcome}")
     except Exception as e:
-        logging.error(f"Error running job with label={label} - {str(e)}")
+        logging.error(f"Error running job with label = {label} - {str(e)}")
+
+def threaded_job(event, label):
+    thread = threading.Thread(target=job_wrapper, args=(event, label))
+    thread.start()
+
 
 def heartbeat():
     logging.info("Heartbeat - System is running")
@@ -60,7 +67,7 @@ def schedule_jobs(config):
             }
         }
 
-        schedule.every().day.at(time_str).do(job_wrapper, event=event, label=label)
+        schedule.every().day.at(time_str).do(threaded_job, event=event, label=label)
 
     heartbeat_interval = config.get('heartbeat_interval_minutes', 10)
     schedule.every(heartbeat_interval).minutes.do(heartbeat)
