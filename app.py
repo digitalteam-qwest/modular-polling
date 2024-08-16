@@ -67,6 +67,9 @@ def schedule_jobs(config):
             }
         }
 
+        if 'conditions' in job:
+            event["queryStringParameters"]["conditions"] = job["conditions"]
+
         schedule.every().day.at(time_str).do(threaded_job, event=event, label=label)
 
     heartbeat_interval = config.get('heartbeat_interval_minutes', 10)

@@ -66,6 +66,31 @@ class Test_TestIncrementDecrement(unittest.TestCase):
 
         self.assertEqual(outcome['result'], 'All good')
 
+    def test_condition(self):
+        event = {
+            "queryStringParameters": {
+                "environment": 'test',
+                "integrationIDs": [
+                    ['66bf3eb071d1b'],
+                    ["66bf3f127876a","66bf3f08f1d13"]
+                ],
+                "conditions": {
+                    "66bf3f127876a": {
+                        "token": "responseCode",
+                        "value": "HA1"
+                    },
+                    "66bf3f08f1d13": {
+                        "token": "responseCode",
+                        "value": "HA2"
+                    },
+                }
+            }
+        }
+
+        outcome = lambda_handler(event, None)
+
+        self.assertEqual(outcome['result'], 'All good')
+
     def test_specific(self):
         event = {
             "queryStringParameters": {
