@@ -6,7 +6,6 @@ import os
 import signal
 import sys
 import threading
-from datetime import datetime
 from lambda_function import lambda_handler
 
 # Configure logging
@@ -32,7 +31,6 @@ def job_wrapper(event, label):
 def threaded_job(event, label):
     thread = threading.Thread(target=job_wrapper, args=(event, label))
     thread.start()
-
 
 def heartbeat():
     logging.info("Heartbeat - System is running")

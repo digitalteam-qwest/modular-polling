@@ -106,5 +106,21 @@ class Test_TestIncrementDecrement(unittest.TestCase):
 
         self.assertEqual(outcome['result'], 'All good')
 
+    def test_highways(self):
+        event = {
+            "queryStringParameters": {
+                "environment": 'live',
+                "integrationIDs": [
+                    ['66c6eb17b4d36'],
+                    ['5dd2b6522be4c'],
+                    ['66dacda5517ca']
+                ]
+            }
+        }
+
+        outcome = lambda_handler(event, None)
+
+        self.assertEqual(outcome['result'], 'All good')
+
 if __name__ == '__main__':
     unittest.main()

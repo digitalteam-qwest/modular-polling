@@ -1,13 +1,14 @@
 {
     "jobs": [
         {
-            "time": "02:00",
+            "time": "01:00",
             "integrationIDs": [
-                ["669ed69196a84"],
-                ["669ed1bdb4b43"]
+                ["66c6eb17b4d36"],
+                ["5dd2b6522be4c"],
+                ["66dacda5517ca"]
             ],
-            "environment": "test",
-            "label":"FPN - test"
+            "environment": "live",
+            "label":"Confirm polling - live"
         },
         {
             "time": "03:00",
@@ -70,6 +71,15 @@
             ],
             "environment": "live",
             "label":"Sports and events - cancel expired payments - live"
+        },
+        {
+            "time": "06:00",
+            "integrationIDs": [
+                ["669ed69196a84"],
+                ["669ed1bdb4b43"]
+            ],
+            "environment": "test",
+            "label":"FPN - test"
         }
     ],
     "jobs_suspended": [
