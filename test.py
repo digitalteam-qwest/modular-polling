@@ -1,5 +1,6 @@
 from lambda_function import lambda_handler
 import unittest
+import datetime
 
 class Test_TestIncrementDecrement(unittest.TestCase):
     def test_linear(self):
@@ -66,7 +67,7 @@ class Test_TestIncrementDecrement(unittest.TestCase):
 
         self.assertEqual(outcome['result'], 'All good')
 
-    def test_condition(self):
+    def test_value_condition(self):
         event = {
             "queryStringParameters": {
                 "environment": 'test',
@@ -84,6 +85,45 @@ class Test_TestIncrementDecrement(unittest.TestCase):
                         "value": "HA2"
                     },
                 }
+            }
+        }
+
+        outcome = lambda_handler(event, None)
+
+        self.assertEqual(outcome['result'], 'All good')
+
+    def test_day_condition_skip(self):
+        current_day = datetime.datetime.today().weekday()
+
+        event = {
+            "queryStringParameters": {
+                "environment": 'test',
+                "integrationIDs": [
+                    ['66bf3eb071d1b']
+                ],
+                "blackout_days": [current_day] # 0: monday, 7: sunday
+            }
+        }
+
+        outcome = lambda_handler(event, None)
+
+        self.assertEqual(outcome['result'], 'Skipping the job due to blackout day.')
+
+    def test_day_condition_complete(self):
+        current_day = datetime.datetime.today().weekday()
+
+        blackout_day = 0
+
+        if current_day == blackout_day:
+            blackout_day = 1
+
+        event = {
+            "queryStringParameters": {
+                "environment": 'test',
+                "integrationIDs": [
+                    ['66bf3eb071d1b']
+                ],
+                "blackout_days": [blackout_day] # 0: monday, 7: sunday
             }
         }
 

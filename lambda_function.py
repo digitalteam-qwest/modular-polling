@@ -1,21 +1,18 @@
 from lookup import integrations
 import time
+import datetime
 
 def lambda_handler(event, context):
     start = time.time()
 
-    environment = 'test'
-    
-    #basic validations
-    if "queryStringParameters" not in event:        
-        return 'Invalid parameters'
-        
-    environment = event['queryStringParameters']['environment']
-    integrationIDs = event['queryStringParameters']['integrationIDs']
+    #check if the today is within a blackout_day
+    def skip_job(blackout_days):
+        current_day = datetime.datetime.today().weekday()
 
-    conditions = None
-    if 'conditions' in event['queryStringParameters']:
-        conditions = event['queryStringParameters']['conditions']
+        if blackout_days and current_day in blackout_days:
+            return True 
+
+        return False
 
     #call the given integration and pass the given row as the payload
     def callIntegration(integrationID, row):
@@ -58,6 +55,28 @@ def lambda_handler(event, context):
                 if (len(integrationIDs) > index + 1):
                     newIndex = index + 1
                     recursiveSomething(newIndex, newRows)
+
+    environment = 'test'
+    
+    #basic validations
+    if "queryStringParameters" not in event:        
+        return 'Invalid parameters'
+        
+    environment = event['queryStringParameters']['environment']
+    integrationIDs = event['queryStringParameters']['integrationIDs']
+
+    conditions = None
+    if 'conditions' in event['queryStringParameters']:
+        conditions = event['queryStringParameters']['conditions']
+
+    blackout_days = None
+    if 'blackout_days' in event['queryStringParameters']:
+        blackout_days = event['queryStringParameters']['blackout_days']
+
+    if skip_job(blackout_days):
+        return {
+            "result": "Skipping the job due to blackout day.",
+        }
     
     #integrations initialisation
     integration = integrations(environment)

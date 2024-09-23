@@ -7,6 +7,7 @@
                 ["5dd2b6522be4c"],
                 ["66dacda5517ca"]
             ],
+            "blackout_days": [6],
             "environment": "live",
             "label":"Confirm polling - live"
         },
