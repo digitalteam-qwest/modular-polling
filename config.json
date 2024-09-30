@@ -79,8 +79,8 @@
                 ["669ed69196a84"],
                 ["669ed1bdb4b43"]
             ],
-            "environment": "test",
-            "label":"FPN - test"
+            "environment": "live",
+            "label":"FPN - live"
         }
     ],
     "jobs_suspended": [
