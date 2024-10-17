@@ -81,6 +81,14 @@
             ],
             "environment": "live",
             "label":"FPN - live"
+        },
+        {
+            "time": "07:00",
+            "integrationIDs": [
+                ["670fc899703f0"]
+            ],
+            "environment": "live",
+            "label":"Allotments - live"
         }
     ],
     "jobs_suspended": [
