@@ -12,6 +12,18 @@
             "label":"Confirm polling - live"
         },
         {
+            "time": "02:00",
+            "integrationIDs": [
+                ["679264029b5e9"],
+                ["5dd2b6522be4c"],
+                ["67935c3fda786"],
+                ["67a7d4a8594c5"]
+            ],
+            "blackout_days": [6],
+            "environment": "live",
+            "label":"Confirm polling - for councillors - live"
+        },
+        {
             "time": "03:00",
             "integrationIDs": [
                 ["62a205a6cda71"],
